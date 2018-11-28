@@ -1,0 +1,6 @@
+---
+
+- name: Upgrade all installed packages using the apt tool
+  apt:
+    upgrade: yes
+    update_cache: yes

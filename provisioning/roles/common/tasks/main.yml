@@ -1,0 +1,10 @@
+---
+
+- name: Upgrade the system and its packages
+  include: upgrade.yml
+
+- name: Install all tools
+  include: tools.yml
+
+- name: Secure the server
+  include: hardening.yml

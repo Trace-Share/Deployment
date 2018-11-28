@@ -1,0 +1,72 @@
+---
+
+- name: Install hradening tools
+  apt:
+    name: [ufw, unattended-upgrades]
+
+
+# -------------------------------------------------------------------
+# Automatic update and upgrade of all installed packages
+# -------------------------------------------------------------------
+
+- name: Set APT update intervals
+  copy:
+    src: apt_update-periodic.txt
+    dest: /etc/apt/apt.conf.d/10periodic
+
+- name: Enable automatic reboot when needed
+  lineinfile:
+    dest: /etc/apt/apt.conf.d/50unattended-upgrades
+    line: "Unattended-Upgrade::Automatic-Reboot \"true\";"
+    state: present
+
+- name: Set time of automatic reboot
+  lineinfile:
+    dest: /etc/apt/apt.conf.d/50unattended-upgrades
+    line: "Unattended-Upgrade::Automatic-Reboot-Time \"02:00\";"
+    state: present
+
+
+# -------------------------------------------------------------------
+# Firewall settings
+# -------------------------------------------------------------------
+
+- name: Allow SSH traffic on ufw firewall
+  ufw:
+    rule: allow
+    port: 22
+    proto: tcp
+
+- name: Setup and enable ufw firewall
+  ufw:
+    state: enabled
+    policy: deny
+
+
+# -------------------------------------------------------------------
+# SSH service settings
+# -------------------------------------------------------------------
+
+- name: Disallow root SSH access
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^PermitRootLogin"
+    line: "PermitRootLogin no"
+    state: present
+  notify: Restart SSH service
+
+- name: Disallow password SSH authentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^PasswordAuthentication"
+    line: "PasswordAuthentication no"
+    state: present
+  notify: Restart SSH service
+
+- name: Set log level of SSH service
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^LogLevel"
+    line: "LogLevel VERBOSE"
+    state: present
+  notify: Restart SSH service

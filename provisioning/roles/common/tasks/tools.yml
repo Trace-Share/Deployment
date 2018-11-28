@@ -1,0 +1,5 @@
+---
+
+- name: Install all basic administrator tools
+  apt:
+    name: [vim, htop, ncdu, mc, net-tools]
