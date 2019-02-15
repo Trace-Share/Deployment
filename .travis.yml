@@ -6,15 +6,19 @@ language: python
 
 python: 3.6
 
+env:
+  - ANSIBLE_PLAYBOOK="provisioning/core.yml"
+    ANSIBLE_INVENTORY="core.trace-share ansible_host=localhost"
+
 install:
   - pip install ansible
 
 before_script:
-  - echo "core.trace-share ansible_host=localhost" > inventory
+  - echo $ANSIBLE_INVENTORY > inventory
 
 script:
   # Check the role/playbook's syntax
-  - ansible-playbook -i inventory provisioning/core.yml --syntax-check
+  - ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --syntax-check
 
   # Run the role/playbook with ansible-playbook
-  - ansible-playbook -i inventory provisioning/core.yml --connection=local
+  - ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --connection=local
