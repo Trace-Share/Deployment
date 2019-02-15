@@ -18,6 +18,7 @@ before_script:
 
 script:
   - sudo apt-get update -y
+  - sudo service mysql start
   - sudo apt-get upgrade -y
 
   # Check the role/playbook's syntax
