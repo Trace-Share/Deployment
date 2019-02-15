@@ -13,4 +13,8 @@ before_script:
   - echo "localhost" > inventory
 
 script:
-  - ansible-playbook -i inventory provisioning/ci-test.yml --syntax-check 
+  # Check the role/playbook's syntax
+  - ansible-playbook -i inventory provisioning/ci-test.yml --syntax-check
+
+  # Run the role/playbook with ansible-playbook
+  - ansible-playbook -i inventory provisioning/ci-test.yml
