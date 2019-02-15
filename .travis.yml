@@ -10,7 +10,7 @@ install:
   - pip install ansible
 
 before_script:
-  - echo "localhost" > inventory
+  - echo "core.trace-share ansible_host=localhost" > inventory
 
 script:
   # Check the role/playbook's syntax
