@@ -7,8 +7,8 @@ language: python
 python: 3.6
 
 env:
-  - ANSIBLE_PLAYBOOK="provisioning/core.yml"
-    ANSIBLE_INVENTORY="core.trace-share ansible_host=localhost"
+  - ANSIBLE_PLAYBOOK="provisioning/ci-test.yml"
+    ANSIBLE_INVENTORY="localhost"
 
 install:
   - pip install ansible
