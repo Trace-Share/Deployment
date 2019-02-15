@@ -1,0 +1,28 @@
+---
+
+dist: xenial
+
+language: python
+
+python: 3.6
+
+env:
+  - ANSIBLE_PLAYBOOK="provisioning/core.yml"
+    ANSIBLE_INVENTORY="core.trace-share ansible_host=localhost"
+
+install:
+  - pip install ansible
+
+before_script:
+  # Enable MySQL service to fix broken apt upgrade on Travis
+  - sudo systemctl enable mysql
+  
+  # Create Ansible inventory file
+  - echo $ANSIBLE_INVENTORY > inventory
+
+script:
+  # Check the role/playbook's syntax
+  - ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --syntax-check
+
+  # Run the role/playbook with ansible-playbook
+  - ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --connection=local
