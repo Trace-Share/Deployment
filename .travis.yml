@@ -17,6 +17,9 @@ before_script:
   - echo $ANSIBLE_INVENTORY > inventory
 
 script:
+  - sudo apt-get update -y
+  - sudo apt-get upgrade -y
+
   # Check the role/playbook's syntax
   - ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --syntax-check
 
