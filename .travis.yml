@@ -7,22 +7,22 @@ language: python
 python: 3.6
 
 env:
-  - ANSIBLE_PLAYBOOK="provisioning/ci-test.yml"
-    ANSIBLE_INVENTORY="localhost"
+  - ANSIBLE_PLAYBOOK="provisioning/core.yml"
+    ANSIBLE_INVENTORY="core.trace-share ansible_host=localhost"
 
 install:
   - pip install ansible
 
 before_script:
+  # Enable MySQL service to fix broken apt upgrade
+  - sudo systemctl enable mysql
+  
+  # Create Ansible inventory file
   - echo $ANSIBLE_INVENTORY > inventory
 
 script:
-  - sudo systemctl enable mysql
-  - sudo apt-get update
-  - sudo apt-get upgrade -y
-
   # Check the role/playbook's syntax
-  #- ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --syntax-check
+  - ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --syntax-check
 
   # Run the role/playbook with ansible-playbook
-  #- ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --connection=local
+  - ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --connection=local
