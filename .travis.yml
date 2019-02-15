@@ -14,7 +14,7 @@ install:
   - pip install ansible
 
 before_script:
-  # Enable MySQL service to fix broken apt upgrade
+  # Enable MySQL service to fix broken apt upgrade on Travis
   - sudo systemctl enable mysql
   
   # Create Ansible inventory file
