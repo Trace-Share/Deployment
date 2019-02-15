@@ -17,12 +17,12 @@ before_script:
   - echo $ANSIBLE_INVENTORY > inventory
 
 script:
-  - sudo apt-get update -y
-  - sudo service mysql start
+  - sudo systemctl enable mysql
+  - sudo apt-get update
   - sudo apt-get upgrade -y
 
   # Check the role/playbook's syntax
-  - ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --syntax-check
+  #- ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --syntax-check
 
   # Run the role/playbook with ansible-playbook
-  - ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --connection=local
+  #- ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --connection=local
