@@ -17,4 +17,4 @@ script:
   - ansible-playbook -i inventory provisioning/ci-test.yml --syntax-check
 
   # Run the role/playbook with ansible-playbook
-  - ansible-playbook -i inventory provisioning/ci-test.yml
+  - ansible-playbook -i inventory provisioning/ci-test.yml --connection=local
