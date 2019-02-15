@@ -14,7 +14,7 @@ before_script:
 
 script:
   # Check the role/playbook's syntax
-  - ansible-playbook -i inventory provisioning/ci-test.yml --syntax-check
+  - ansible-playbook -i inventory provisioning/core.yml --syntax-check
 
   # Run the role/playbook with ansible-playbook
-  - ansible-playbook -i inventory provisioning/ci-test.yml --connection=local
+  - ansible-playbook -i inventory provisioning/core.yml --connection=local
