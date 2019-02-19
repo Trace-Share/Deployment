@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve trace api
+After=network.target
+
+[Service]
+User=traces
+Group=www-data
+WorkingDirectory=/trace-api/
+Environment="PATH=/trace-api/venv/bin"
+ExecStart=/trace-api/venv/bin/uwsgi --ini uwsgi.ini
+
+[Install]
+WantedBy=multi-user.target

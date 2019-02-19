@@ -1,0 +1,3 @@
+postgre_username: root
+postgre_password: test
+postgre_database: traces

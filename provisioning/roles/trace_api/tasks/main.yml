@@ -1,0 +1,10 @@
+---
+
+- name: Instal database
+  include: postgresql.yml
+
+- name: Instal docker
+  include: docker.yml
+
+- name: Instal trace api app
+  include: trace_api.yml

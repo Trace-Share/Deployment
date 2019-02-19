@@ -1,0 +1,26 @@
+---
+
+- name: Install required tools
+  apt:
+    name: [postgresql, python-psycopg2]
+
+- name: Start postgresql database
+  systemd:
+    name: postgresql
+    enabled: true
+    state: started
+
+- name: Create database
+  become: true
+  become_user: postgres
+  postgresql_db:
+    name: "{{ postgre_database }}"
+    encoding: UTF-8
+
+- name: Create user to access database
+  become: true
+  become_user: postgres
+  postgresql_user:
+    db: traces
+    name: "{{ postgre_username }}"
+    password: "{{ postgre_password }}"
