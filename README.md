@@ -19,7 +19,7 @@ The main idea of Trace-Share is based on annotated units of network traffic that
 
 ## Project Organization Structure
 
-The project is organized within the [Trace-Share](https://github.com/Trace-Share) organization distrubuted over different repositories to simplify development. Please see their individual readme's and issue trackers if you like to contribute.
+The project is organized within the [Trace-Share](https://github.com/Trace-Share) organization distributed over different repositories to simplify development. Please see their individual readme's and issue trackers if you like to contribute.
 
 - [Trace-API](https://github.com/Trace-Share/Trace-API) – REST API to support processing of packet traces
 - [ID2T](https://github.com/Trace-Share/ID2T) – fork of the official ID2T repository extended by functions to modify and combine existing packet traces
