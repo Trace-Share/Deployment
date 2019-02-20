@@ -14,8 +14,10 @@ install:
   - pip install ansible
 
 before_script:
-  # Enable MySQL service to fix broken apt upgrade on Travis
-  - sudo systemctl enable mysql
+  # Remove preinstalled MySQL and PostgreSQL databases to enable their clean install
+  - sudo apt-get --purge remove mysql-common
+  - sudo apt-get --purge remove postgresql-common
+  - sudo apt-get autoremove 
   
   # Create Ansible inventory file
   - echo $ANSIBLE_INVENTORY > inventory

@@ -1,14 +1,15 @@
 ---
 
-- name: Install required tools
+- name: Install PostgreSQL
   apt:
     name: [postgresql, python-psycopg2]
+    update_cache: yes
 
-- name: Start postgresql database
+- name: Start PostgreSQL database
   systemd:
     name: postgresql
     enabled: true
-    state: started
+    state: restarted
 
 - name: Create database
   become: true
