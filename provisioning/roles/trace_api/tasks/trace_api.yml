@@ -3,7 +3,7 @@
 - name: Install required tools
   apt:
     name: [python3, python3-pip, python3-dev, python3-venv, git, nginx]
-
+    update_cache: yes
 
 - name: Add the user 'traces'
   user:
@@ -32,7 +32,7 @@
   pip:
     requirements: /trace-api/requirements.txt
     virtualenv: /trace-api/venv
-    virtualenv_python: python3.6
+    virtualenv_python: python3
 
 - name: Configure traceapi
   template:
@@ -46,10 +46,10 @@
 
 - name: Ensure correct permissions
   file:
-    dest=/trace-api
-    owner=traces
-    group=www-data
-    recurse=yes
+    dest: /trace-api
+    owner: traces
+    group: www-data
+    recurse: yes
 
 - name: Configure traceapi service
   copy:
