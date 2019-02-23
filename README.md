@@ -17,7 +17,7 @@ Local deployment is primarily provided to ease testing and development of Trace-
 
 #### Ansible Configuration
 
-Provision properties of the Trace-Share framework can be set in the [provisioning/core.yml](/provisionng/core.yml) file. See the documentation of individual roles in [provisioning/roles/](/provisioning/roles/) to see all available settings and their usage.
+Provision properties of the Trace-Share framework can be set in the [provisioning/core.yml](/provisioning/core.yml) file. See the documentation of individual roles in [provisioning/roles/](/provisioning/roles/) to see all available settings and their usage.
 
 #### Virtual  Machine Configuration
 
