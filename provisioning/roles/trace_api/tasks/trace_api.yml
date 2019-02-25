@@ -68,7 +68,7 @@
     path: /etc/nginx/sites-enabled/default
 
 - name: Configure nginx
-  copy:
+  template:
     src: trace_api
     dest: /etc/nginx/sites-available/trace-api
 

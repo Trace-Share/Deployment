@@ -1,6 +1,8 @@
 server {
     listen 80;
 
+    client_max_body_size  {{ nginx_client_max_body_size }};
+
     location / {
         include uwsgi_params;
         uwsgi_pass unix:/trace-api/trace_api.sock;
