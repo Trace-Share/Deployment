@@ -8,6 +8,7 @@
 - name: Add the user 'traces'
   user:
     name: traces
+    shell: /bin/bash
     group: www-data
 
 - name: Allow user www-data to use docker
