@@ -3,7 +3,7 @@
 
 Automated deployment of the Trace-Share platform to ease its installation within both testing and production environment.
 
-[![Build Status](https://travis-ci.org/Trace-Share/Deployment.svg?branch=master)](https://travis-ci.org/Trace-Share/Deployment)
+[![Build Status](https://travis-ci.com/Trace-Share/Deployment.svg?branch=master)](https://travis-ci.com/Trace-Share/Deployment)
 
 ### Table of Contents
 
